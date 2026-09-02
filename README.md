@@ -16,7 +16,7 @@
 
 ## 安装
 
-把这三个文件放进 `<你的库>/.obsidian/plugins/obsidian-image-editor/`：
+把这三个文件放进 `<你的库>/.obsidian/plugins/image-editor-xhz/`：
 
 ```
 main.js
