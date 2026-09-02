@@ -1,0 +1,41 @@
+{
+  "name": "obsidian-image-editor",
+  "version": "1.0.0",
+  "description": "在 Obsidian 中右键图片即可打开内置图片编辑器，支持标注与裁剪，保存后自动替换原图。",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs --production",
+    "typecheck": "tsc -noEmit -skipLibCheck",
+    "test": "node ./node_modules/esbuild/bin/esbuild test/entry.ts --bundle --format=cjs --outfile=test/logic.cjs --external:obsidian --platform=node --log-level=warning && node test/smoke.cjs && node test/logic.test.cjs"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "image",
+    "editor",
+    "annotate",
+    "crop"
+  ],
+  "author": {
+    "name": "zhenxinzuishiwuyong",
+    "url": "https://github.com/zhenxinzuishiwuyong"
+  },
+  "homepage": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "builtin-modules": "3.3.0",
+    "esbuild": "0.17.3",
+    "obsidian": "^1.4.11",
+    "tslib": "2.4.0",
+    "typescript": "4.7.4"
+  }
+}

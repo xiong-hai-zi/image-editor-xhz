@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Obsidian Image Editor —— 插件样式
+   所有颜色都走 Obsidian 主题变量，自动适配明暗主题
+   ========================================================================== */
+
+.imged-root {
+  --imged-stage-bg: #26262b;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background-primary);
+}
+
+.theme-light .imged-root {
+  --imged-stage-bg: #e4e4e8;
+}
+
+/* ------------------------------------------------------------------ 工具栏 */
+
+.imged-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+}
+
+.imged-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 8px;
+  margin-right: 6px;
+  border-right: 1px solid var(--background-modifier-border);
+}
+
+.imged-group:last-child,
+.imged-group.imged-actions {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.imged-actions {
+  margin-left: auto;
+  gap: 6px;
+}
+
+.imged-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.imged-btn > svg {
+  flex: 0 0 auto;
+}
+
+.imged-btn > span {
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.imged-btn:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.imged-btn.is-active {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  border-color: var(--interactive-accent);
+}
+
+.imged-btn.is-disabled {
+  opacity: 0.32;
+  pointer-events: none;
+}
+
+.imged-btn-primary {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  padding: 0 12px;
+  font-weight: 600;
+}
+
+.imged-btn-primary:hover {
+  background: var(--interactive-accent-hover);
+  color: var(--text-on-accent);
+}
+
+.imged-btn-accent {
+  padding: 0 10px;
+  border-color: var(--interactive-accent);
+  color: var(--interactive-accent);
+}
+
+/* ------------------------------------------------------------- 样式控件 */
+
+.imged-style {
+  gap: 5px;
+}
+
+.imged-style.is-dim {
+  opacity: 0.65;
+}
+
+.imged-swatch {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18) inset;
+}
+
+.imged-swatch:hover {
+  transform: scale(1.12);
+}
+
+.imged-color-pick {
+  display: inline-flex;
+  align-items: center;
+}
+
+.imged-color-input {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 5px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.imged-color-input::-webkit-color-swatch {
+  border: none;
+  border-radius: 3px;
+}
+
+.imged-width {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.imged-range {
+  width: 74px;
+  accent-color: var(--interactive-accent);
+}
+
+.imged-width-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  min-width: 30px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.imged-select {
+  height: 26px;
+  padding: 0 4px;
+  font-size: 11px;
+  border-radius: 5px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+/* ------------------------------------------------------------------ 画布区 */
+
+.imged-stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--imged-stage-bg);
+  cursor: default;
+}
+
+.imged-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.imged-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #9aa0a6;
+  pointer-events: none;
+}
+
+.imged-empty.is-hidden {
+  display: none;
+}
+
+.imged-text-input {
+  position: absolute;
+  z-index: 5;
+  min-width: 140px;
+  min-height: 1.4em;
+  padding: 0 3px;
+  border: 1px dashed var(--interactive-accent);
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  line-height: 1.35;
+  resize: none;
+  overflow: hidden;
+  outline: none;
+  white-space: pre;
+}
+
+/* ------------------------------------------------------------------ 状态栏 */
+
+.imged-status {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 10px;
+  border-top: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  overflow: hidden;
+}
+
+.imged-status-name {
+  font-weight: 600;
+  color: var(--text-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.imged-status-dim,
+.imged-status-zoom {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.imged-status-tip {
+  margin-left: auto;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* 插件内部的隐藏工具类（Obsidian 没有全局 .is-hidden） */
+.imged-root .is-hidden {
+  display: none !important;
+}
+
+/* ------------------------------------------------------- 兜底右键菜单项 */
+
+.imged-menu-item .menu-item-icon {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+}
