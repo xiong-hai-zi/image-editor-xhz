@@ -18,16 +18,16 @@
     "crop"
   ],
   "author": {
-    "name": "zhenxinzuishiwuyong",
-    "url": "https://github.com/zhenxinzuishiwuyong"
+    "name": "xiong-hai-zi",
+    "url": "https://github.com/xiong-hai-zi"
   },
-  "homepage": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor",
+  "homepage": "https://github.com/xiong-hai-zi/obsidian-image-editor",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor.git"
+    "url": "https://github.com/xiong-hai-zi/obsidian-image-editor.git"
   },
   "bugs": {
-    "url": "https://github.com/zhenxinzuishiwuyong/obsidian-image-editor/issues"
+    "url": "https://github.com/xiong-hai-zi/obsidian-image-editor/issues"
   },
   "license": "MIT",
   "devDependencies": {
