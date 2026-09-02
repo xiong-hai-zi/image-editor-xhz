@@ -61,7 +61,7 @@ const app = {
     throw new Error('main.js 未导出默认插件类');
   }
 
-  const plugin = new PluginClass(app, { id: 'obsidian-image-editor', version: '1.0.0' });
+  const plugin = new PluginClass(app, { id: 'image-editor', version: '1.0.0' });
   console.log('✓ 插件类可实例化');
 
   await plugin.onload();
