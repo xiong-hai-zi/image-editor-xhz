@@ -1,4 +1,6 @@
-# Obsidian Image Editor
+# Image Editor
+
+**English**: Annotate and crop images in place. Right-click any image in your vault to open the built-in editor — draw, add text or mosaic, crop — then save to replace the original instantly.
 
 在 Obsidian 文档里**右键图片 → 编辑图片**，直接打开内置图片编辑器做标注和裁剪，点「完成」后原图被替换、文档里的图片立即刷新。
 
