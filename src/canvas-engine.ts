@@ -236,8 +236,9 @@ export class ImageEditorEngine {
     if (!this.drag) {
       if (this.tool === 'crop' && this.cropRect) {
         const h = this.hitCropHandle(p);
-        this.canvas.style.cursor =
-          h ?? (rectContains(this.cropRect, p) ? 'move' : 'crosshair');
+        this.canvas.setCssStyles({
+          cursor: h ?? (rectContains(this.cropRect, p) ? 'move' : 'crosshair'),
+        });
       }
       return;
     }
@@ -427,9 +428,8 @@ export class ImageEditorEngine {
   }
 
   private updateCursor(): void {
-    if (this.spaceDown || this.tool === 'hand') this.canvas.style.cursor = 'grab';
-    else if (this.tool === 'crop' || this.tool === 'text') this.canvas.style.cursor = 'crosshair';
-    else this.canvas.style.cursor = 'crosshair';
+    if (this.spaceDown || this.tool === 'hand') this.canvas.setCssStyles({ cursor: 'grab' });
+    else this.canvas.setCssStyles({ cursor: 'crosshair' });
   }
 
   // ---------------------------------------------------------------- 编辑操作

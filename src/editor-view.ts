@@ -1,7 +1,7 @@
 import { ItemView, Notice, Scope, TFile, ViewStateResult, WorkspaceLeaf } from 'obsidian';
 import { ImageEditorEngine } from './canvas-engine';
 import type ImageEditorPlugin from './main';
-import { iconSvg } from './icons';
+import { appendIcon } from './icons';
 import { decodeImage, mimeOf } from './image-loader';
 import { isImageFile } from './image-resolver';
 import { EngineState, ToolName } from './types';
@@ -203,7 +203,7 @@ export class ImageEditorView extends ItemView {
         cls: 'imged-btn',
         attr: { type: 'button', 'aria-label': t.label },
       });
-      btn.innerHTML = iconSvg(t.icon);
+      appendIcon(btn, t.icon);
       btn.title = t.hotkey ? `${t.label}（${t.hotkey}）` : t.label;
       btn.addEventListener('click', () => this.setTool(t.id));
       this.toolButtons.set(t.id, btn);
@@ -217,7 +217,7 @@ export class ImageEditorView extends ItemView {
         cls: 'imged-swatch',
         attr: { type: 'button', 'aria-label': `颜色 ${c}` },
       });
-      sw.style.background = c;
+      sw.setCssStyles({ background: c });
       sw.title = c;
       sw.addEventListener('click', () => this.setColor(c));
     }
@@ -245,7 +245,7 @@ export class ImageEditorView extends ItemView {
       cls: 'imged-btn',
       attr: { type: 'button', 'aria-label': '矩形/椭圆半透明填充' },
     });
-    this.fillBtn.innerHTML = iconSvg('fill');
+    appendIcon(this.fillBtn, 'fill');
     this.fillBtn.title = '矩形 / 椭圆填充';
     let filled = false;
     this.fillBtn.addEventListener('click', () => {
@@ -278,7 +278,8 @@ export class ImageEditorView extends ItemView {
       cls: 'imged-btn imged-btn-accent',
       attr: { type: 'button' },
     });
-    this.applyCropBtn.innerHTML = `${iconSvg('check')}<span>应用裁剪</span>`;
+    appendIcon(this.applyCropBtn, 'check');
+    this.applyCropBtn.createSpan({ text: '应用裁剪' });
     this.applyCropBtn.title = '应用裁剪 (Enter)';
     this.applyCropBtn.addEventListener('click', () => this.engine?.applyCrop());
     makeBtn(this.cropGroup, 'close', '退出裁剪 (Esc)', () => this.setTool('pen'));
@@ -286,7 +287,8 @@ export class ImageEditorView extends ItemView {
     // ---- 右侧操作
     const actions = bar.createDiv({ cls: 'imged-group imged-actions' });
     const saveCopyBtn = actions.createEl('button', { cls: 'imged-btn', attr: { type: 'button' } });
-    saveCopyBtn.innerHTML = `${iconSvg('copy')}<span>另存为</span>`;
+    appendIcon(saveCopyBtn, 'copy');
+    saveCopyBtn.createSpan({ text: '另存为' });
     saveCopyBtn.title = '保存为新 PNG 文件，不动原图';
     saveCopyBtn.addEventListener('click', () => void this.save(true));
 
@@ -294,7 +296,8 @@ export class ImageEditorView extends ItemView {
       cls: 'imged-btn imged-btn-primary',
       attr: { type: 'button' },
     });
-    saveBtn.innerHTML = `${iconSvg('save')}<span>完成</span>`;
+    appendIcon(saveBtn, 'save');
+    saveBtn.createSpan({ text: '完成' });
     saveBtn.title = '保存并替换原图 (Ctrl+S)';
     saveBtn.addEventListener('click', () => void this.save(false));
 
@@ -337,10 +340,12 @@ export class ImageEditorView extends ItemView {
     const zoom = engine.getZoom();
 
     const ta = stage.createEl('textarea', { cls: 'imged-text-input' });
-    ta.style.left = `${x}px`;
-    ta.style.top = `${y}px`;
-    ta.style.fontSize = `${Math.max(10, this.plugin.settings.defaultFontSize * zoom)}px`;
-    ta.style.color = this.plugin.settings.defaultColor;
+    ta.setCssStyles({
+      left: `${x}px`,
+      top: `${y}px`,
+      fontSize: `${Math.max(10, this.plugin.settings.defaultFontSize * zoom)}px`,
+      color: this.plugin.settings.defaultColor,
+    });
     ta.placeholder = '输入文字后按 Ctrl+Enter 确认，Esc 取消';
     ta.rows = 1;
     this.textInput = ta;
@@ -361,8 +366,8 @@ export class ImageEditorView extends ItemView {
       else this.closeTextInput();
     });
     ta.addEventListener('input', () => {
-      ta.style.height = 'auto';
-      ta.style.height = `${ta.scrollHeight}px`;
+      ta.setCssStyles({ height: 'auto' });
+      ta.setCssStyles({ height: `${ta.scrollHeight}px` });
     });
 
     window.setTimeout(() => ta.focus(), 0);
@@ -599,7 +604,7 @@ function makeBtn(
     cls: 'imged-btn',
     attr: { type: 'button', 'aria-label': label },
   });
-  btn.innerHTML = iconSvg(icon);
+  appendIcon(btn, icon);
   btn.title = label;
   btn.addEventListener('click', onClick);
   return btn;

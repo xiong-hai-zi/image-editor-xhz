@@ -10,7 +10,7 @@ import {
   TFile,
 } from 'obsidian';
 import { ImageEditorView, VIEW_TYPE_IMAGE_EDITOR } from './editor-view';
-import { iconSvg } from './icons';
+import { appendIcon } from './icons';
 import { isImageFile, resolveImageAt, resolveImageAtCursor } from './image-resolver';
 import { ToolName } from './types';
 
@@ -172,7 +172,7 @@ export default class ImageEditorPlugin extends Plugin {
     item.className = 'menu-item imged-menu-item';
     const icon = document.createElement('div');
     icon.className = 'menu-item-icon';
-    icon.innerHTML = iconSvg('pencil', 16);
+    appendIcon(icon, 'pencil', 16);
     const title = document.createElement('div');
     title.className = 'menu-item-title';
     title.textContent = '编辑图片';

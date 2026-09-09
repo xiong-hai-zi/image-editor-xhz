@@ -40,3 +40,13 @@ export function iconSvg(name: keyof typeof P | string, size = 18): string {
   const body = P[name] ?? '';
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${body}</svg>`;
 }
+
+/**
+ * 安全地把内联 SVG 注入元素（不经过 innerHTML，用 DOMParser 解析后 appendChild）。
+ * 图标均为本插件内置静态字符串，无用户输入，解析结果必为 <svg>。
+ */
+export function appendIcon(el: HTMLElement, name: keyof typeof P | string, size = 18): void {
+  const doc = new DOMParser().parseFromString(iconSvg(name, size), 'image/svg+xml');
+  const svg = doc.documentElement;
+  if (svg && svg.nodeName.toLowerCase() === 'svg') el.appendChild(svg);
+}
