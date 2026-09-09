@@ -2,6 +2,14 @@
 
 **English**: Annotate and crop images in place. Right-click any image in your vault to open the built-in editor — draw, add text or mosaic, crop — then save to replace the original instantly.
 
+## Features (English)
+
+- Right-click any embedded image (reading mode / live preview) to open the built-in editor
+- Annotation tools: pen, line, arrow, rectangle, ellipse, text, mosaic — with undo / redo and keyboard shortcuts
+- Crop with rule-of-thirds guides; apply or cancel at any time
+- Save to replace the original image, or export as a new PNG file
+- Non-PNG images (JPG / WebP / BMP / GIF) are auto-converted to PNG and all vault links are updated automatically
+
 在 Obsidian 文档里**右键图片 → 编辑图片**，直接打开内置图片编辑器做标注和裁剪，点「完成」后原图被替换、文档里的图片立即刷新。
 
 ## 功能
