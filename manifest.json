@@ -1,10 +1,10 @@
 {
   "id": "image-editor-xhz",
-  "name": "Image Editor (标注 / 裁剪)",
+  "name": "Image Editor",
   "version": "1.0.0",
   "minAppVersion": "1.4.0",
   "description": "在文档中右键图片即可打开内置图片编辑器，支持标注、裁剪与马赛克，点击完成后自动替换原图并即时刷新.",
   "author": "xiong-hai-zi",
-  "authorUrl": "https://github.com/xiong-hai-zi/obsidian-image-editor",
+  "authorUrl": "https://github.com/xiong-hai-zi/image-editor-xhz",
   "isDesktopOnly": true
 }
