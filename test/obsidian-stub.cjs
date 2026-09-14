@@ -39,6 +39,10 @@ function el() {
     createSpan: () => el(),
     createEl: () => el(),
     empty() {},
+    /** Obsidian 的 HTMLElement 扩展：合并内联样式（对应源码里的 setCssStyles） */
+    setCssStyles(styles) {
+      Object.assign(node.style, styles || {});
+    },
     addClass() {},
     removeClass() {},
     toggleClass() {},

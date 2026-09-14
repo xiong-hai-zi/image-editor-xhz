@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
+    "types": [],
     "lib": ["DOM", "ES5", "ES6", "ES7", "ES2019", "ES2020"]
   },
   "include": ["src/**/*.ts"]

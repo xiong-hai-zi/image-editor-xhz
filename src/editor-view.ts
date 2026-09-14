@@ -1,4 +1,12 @@
-import { ItemView, Notice, Scope, TFile, ViewStateResult, WorkspaceLeaf } from 'obsidian';
+import {
+  ItemView,
+  MarkdownView,
+  Notice,
+  Scope,
+  TFile,
+  ViewStateResult,
+  WorkspaceLeaf,
+} from 'obsidian';
 import { ImageEditorEngine } from './canvas-engine';
 import type ImageEditorPlugin from './main';
 import { appendIcon } from './icons';
@@ -542,6 +550,7 @@ export class ImageEditorView extends ItemView {
         await this.loadFile(this.file);
       }
 
+      this.refreshImageViews();
       engine.markSaved();
       this.dirty = false;
       this.updateHeader();
@@ -552,6 +561,21 @@ export class ImageEditorView extends ItemView {
       console.error(err);
       new Notice(`保存失败：${(err as Error).message}`, 8000);
     }
+  }
+
+  /**
+   * 保存完成后强制刷新 Markdown 预览。
+   *
+   * vault.modifyBinary 确实落盘了，但预览层的缓存不会自己失效，
+   * 所以这里遍历所有叶子，让每个 MarkdownView 的 previewMode 重新渲染。
+   */
+  private refreshImageViews(): void {
+    this.app.workspace.iterateAllLeaves((leaf) => {
+      const view = leaf.view;
+      if (view instanceof MarkdownView) {
+        view.previewMode?.rerender(true);
+      }
+    });
   }
 
   private uniquePath(base: string): string {

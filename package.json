@@ -1,6 +1,6 @@
 {
-  "name": "obsidian-image-editor",
-  "version": "1.0.0",
+  "name": "image-editor-xhz",
+  "version": "1.0.1",
   "description": "在 Obsidian 中右键图片即可打开内置图片编辑器，支持标注与裁剪，保存后自动替换原图。",
   "main": "main.js",
   "scripts": {
@@ -21,13 +21,13 @@
     "name": "xiong-hai-zi",
     "url": "https://github.com/xiong-hai-zi"
   },
-  "homepage": "https://github.com/xiong-hai-zi/obsidian-image-editor",
+  "homepage": "https://github.com/xiong-hai-zi/image-editor-xhz",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xiong-hai-zi/obsidian-image-editor.git"
+    "url": "https://github.com/xiong-hai-zi/image-editor-xhz.git"
   },
   "bugs": {
-    "url": "https://github.com/xiong-hai-zi/obsidian-image-editor/issues"
+    "url": "https://github.com/xiong-hai-zi/image-editor-xhz/issues"
   },
   "license": "MIT",
   "devDependencies": {
